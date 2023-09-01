@@ -7,7 +7,7 @@
 </head>
 <body>
     <script>
-        const options = ["Rock", "Paper", "Scissors"]
+        const options = ["ROCK", "PAPER", "SCISSORS"]
 
         // Returns the computers selection of rock, paper or scissors
         function getComputerChoice() {
@@ -16,6 +16,13 @@
             let choice = options[randomNum]
 
             return choice
+        }
+
+        // Compares the players choice and the computers choice
+        function playRound(playerChoice, computerChoice){
+            playerChoice = playerChoice.toUpperCase()
+
+            //TODO: Implement logic
         }
 
         console.log(getComputerChoice())
