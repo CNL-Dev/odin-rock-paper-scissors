@@ -22,38 +22,76 @@
         function playRound(playerChoice, computerChoice){
             playerChoice = playerChoice.toUpperCase()
 
-            // Here is the logic for rock paper scissors
-            if(playerChoice === computerChoice){
-                return "It's a tie! Try again!"
-            }
-            else if(playerChoice === options[0]){
-                if(computerChoice === options[2]){
-                    return "Rock beats scissors, player wins!"
-                }
-                else{
-                    return "Paper beats rock, computer wins!"
-                }
+            if(playerChoice === options[0] || playerChoice === options[1] || playerChoice === options[2]){
 
+                // Here is the logic for rock paper scissors
+                if(playerChoice === computerChoice){
+                    return "It's a tie! Try again!"
+                }
+                else if(playerChoice === options[0]){
+                    if(computerChoice === options[2]){
+                        return "Rock beats scissors, player wins!"
+                    }
+                    else{
+                        return "Paper beats rock, computer wins!"
+                    }
+                }
+                else if(playerChoice === options[1]){
+                    if(computerChoice === [0]){
+                        return "Paper beats rock, player wins!"
+                    }
+                    else{
+                        return "Scissors beats paper, computer wins!"
+                    }
+                }
+                else if(playerChoice === options[2]){
+                    if(computerChoice === [1]){
+                        return "Scissors beats paper, player wins!"
+                    }
+                    else{
+                        return "Rock beats scissors, computer wins!"
+                    }
+                }
             }
-            else if(playerChoice === options[1]){
-                if(computerChoice === [0]){
-                    return "Paper beats rock, player wins!"
-                }
-                else{
-                    return "Scissors beats paper, computer wins!"
-                }
-            }
-            else if(playerChoice === options[2]){
-                if(computerChoice === [1]){
-                    return "Scissors beats paper, player wins!"
-                }
-                else{
-                    return "Rock beats scissors, computer wins!"
-                }
+            else{
+                return "Illegal input, please try again!"
             }
         }
 
-        console.log(getComputerChoice())
+        // Runs the game and its logic
+        function game(){
+            let playerScore = 0
+            let computerScore = 0
+            
+            for(let i = 0; i < 5; i++){
+                const playerInput = prompt("Please enter rock, paper or scissors: ")
+                const computerInput = getComputerChoice()
+
+                const result = playRound(playerInput, computerInput)
+
+                if(result.includes("player")){
+                    playerScore += 1
+                }
+                else if(result.includes("computer")){
+                    computerScore += 1
+                }
+
+                console.log(result)
+                console.log("Current score: ${playerScore} : ${computerScore}")
+            }
+
+            if(playerScore > computerScore){
+                console.log("Player wins!")
+            }
+            else if(playerScore < computerScore){
+                console.log("Computer wins!")
+            }
+            else{
+                console.log("It's a tie!")
+            }
+        }
+
+        game()
     </script>
 </body>
 </html>
