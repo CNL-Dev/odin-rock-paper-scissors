@@ -22,7 +22,35 @@
         function playRound(playerChoice, computerChoice){
             playerChoice = playerChoice.toUpperCase()
 
-            //TODO: Implement logic
+            // Here is the logic for rock paper scissors
+            if(playerChoice === computerChoice){
+                return "It's a tie! Try again!"
+            }
+            else if(playerChoice === options[0]){
+                if(computerChoice === options[2]){
+                    return "Rock beats scissors, player wins!"
+                }
+                else{
+                    return "Paper beats rock, computer wins!"
+                }
+
+            }
+            else if(playerChoice === options[1]){
+                if(computerChoice === [0]){
+                    return "Paper beats rock, player wins!"
+                }
+                else{
+                    return "Scissors beats paper, computer wins!"
+                }
+            }
+            else if(playerChoice === options[2]){
+                if(computerChoice === [1]){
+                    return "Scissors beats paper, player wins!"
+                }
+                else{
+                    return "Rock beats scissors, computer wins!"
+                }
+            }
         }
 
         console.log(getComputerChoice())
