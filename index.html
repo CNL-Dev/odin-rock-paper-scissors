@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div class="button-container"> 
+        <button class="button rock-button"></button>
+        <button class="button paper-button"></button>
+        <button class="button scissor-button"></button>
+    </div>
+
     <script>
         const options = ["ROCK", "PAPER", "SCISSORS"]
 
@@ -16,6 +23,11 @@
             let choice = options[randomNum]
 
             return choice
+        }
+
+        // Returns the players choice of rock, paper or scissors
+        function getPlayerChoice() {
+
         }
 
         // Compares the players choice and the computers choice
@@ -63,6 +75,7 @@
             let playerScore = 0
             let computerScore = 0
             
+            /**
             for(let i = 0; i < 5; i++){
                 const playerInput = prompt("Please enter rock, paper or scissors: ")
                 const computerInput = getComputerChoice()
@@ -79,6 +92,7 @@
                 console.log(result)
                 console.log(`Current score: ${playerScore} : ${computerScore}`)
             }
+            **/
 
             if(playerScore > computerScore){
                 console.log("Player wins!")
