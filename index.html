@@ -13,19 +13,39 @@
         <button id="SCISSORS" class="button">SCISSORS</button>
     </div>
 
+    <div class="score-container">
+        <p class="score">0 : 0</p>
+        <p class="results">RESULTS</p>
+    </div>
+
     <script>
         let playerScore = 0
         let computerScore = 0
-        
+
         const options = ["ROCK", "PAPER", "SCISSORS"]
 
-        const buttons = document.querySelectorAll('.button');
+        const buttons = document.querySelectorAll('.button')
+        const scoreContainer = document.querySelector('.score-container')
+        const score = document.querySelector('.score')
+        const results = document.querySelector('.results')
 
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
-                const playerChoice = button.id
+                const playerInput = button.id
+                const computerInput = getComputerChoice()
 
-                console.log(playerChoice)
+                const currentResults = playRound(playerInput, computerInput)
+
+                score.textContent = playerScore + " : " + computerScore
+                results.textContent = currentResults
+
+                if(playerScore === 5){
+                    displayWinner("Player")
+                }
+                else if(computerScore === 5){
+                    displayWinner("Computer")
+                }
+
             })
         })
 
@@ -38,14 +58,8 @@
             return choice
         }
 
-        // Returns the players choice of rock, paper or scissors
-        function getPlayerChoice() {
-
-        }
-
         // Compares the players choice and the computers choice
         function playRound(playerChoice, computerChoice){
-            playerChoice = playerChoice.toUpperCase()
 
             if(playerChoice === options[0] || playerChoice === options[1] || playerChoice === options[2]){
 
@@ -55,69 +69,46 @@
                 }
                 else if(playerChoice === options[0]){
                     if(computerChoice === options[2]){
-                        return "Rock beats scissors, player wins!"
+                        playerScore++
+                        return "Rock beats scissors, player wins!"                        
                     }
                     else{
+                        computerScore++
                         return "Paper beats rock, computer wins!"
                     }
                 }
                 else if(playerChoice === options[1]){
                     if(computerChoice === [0]){
+                        playerScore++
                         return "Paper beats rock, player wins!"
                     }
                     else{
+                        computerScore++
                         return "Scissors beats paper, computer wins!"
                     }
                 }
                 else if(playerChoice === options[2]){
                     if(computerChoice === [1]){
+                        playerScore++
                         return "Scissors beats paper, player wins!"
                     }
                     else{
-                        return "Rock beats scissors, computer wins!"
+                        computerScore++
+                        return "Rock beats scissors, computer wins!"                       
                     }
                 }
             }
             else{
                 return "Illegal input, please try again!"
             }
+
         }
 
-        // Runs the game and its logic
-        function game(){
-            
-            
-            /**
-            for(let i = 0; i < 5; i++){
-                const playerInput = prompt("Please enter rock, paper or scissors: ")
-                const computerInput = getComputerChoice()
-
-                const result = playRound(playerInput, computerInput)
-
-                if(result.includes("player")){
-                    playerScore += 1
-                }
-                else if(result.includes("computer")){
-                    computerScore += 1
-                }
-
-                console.log(result)
-                console.log(`Current score: ${playerScore} : ${computerScore}`)
-            }
-            **/
-
-            if(playerScore > computerScore){
-                console.log("Player wins!")
-            }
-            else if(playerScore < computerScore){
-                console.log("Computer wins!")
-            }
-            else{
-                console.log("It's a tie!")
-            }
+        function displayWinner(winner) {
+            const winnerText = document.createElement('p')
+            winnerText.textContent = winner + " has won!"
+            scoreContainer.appendChild(winnerText)
         }
-
-        game()
     </script>
 </body>
 </html>
