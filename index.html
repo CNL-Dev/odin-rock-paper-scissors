@@ -8,15 +8,26 @@
 <body>
 
     <div class="button-container"> 
-        <button class="button rock-button">ROCK</button>
-        <button class="button paper-button">PAPER</button>
-        <button class="button scissors-button">SCISSORS</button>
+        <button id="ROCK" class="button">ROCK</button>
+        <button id="PAPER" class="button">PAPER</button>
+        <button id="SCISSORS" class="button">SCISSORS</button>
     </div>
 
     <script>
+        let playerScore = 0
+        let computerScore = 0
+        
         const options = ["ROCK", "PAPER", "SCISSORS"]
 
         const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const playerChoice = button.id
+
+                console.log(playerChoice)
+            })
+        })
 
         // Returns the computers selection of rock, paper or scissors
         function getComputerChoice() {
@@ -74,8 +85,7 @@
 
         // Runs the game and its logic
         function game(){
-            let playerScore = 0
-            let computerScore = 0
+            
             
             /**
             for(let i = 0; i < 5; i++){
@@ -106,8 +116,6 @@
                 console.log("It's a tie!")
             }
         }
-
-        window.addEventListener('mousedown', getPlayerChoice)
 
         game()
     </script>
