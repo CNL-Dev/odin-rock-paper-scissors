@@ -8,13 +8,15 @@
 <body>
 
     <div class="button-container"> 
-        <button class="button rock-button"></button>
-        <button class="button paper-button"></button>
-        <button class="button scissor-button"></button>
+        <button class="button rock-button">ROCK</button>
+        <button class="button paper-button">PAPER</button>
+        <button class="button scissors-button">SCISSORS</button>
     </div>
 
     <script>
         const options = ["ROCK", "PAPER", "SCISSORS"]
+
+        const buttons = document.querySelectorAll('.button');
 
         // Returns the computers selection of rock, paper or scissors
         function getComputerChoice() {
@@ -104,6 +106,8 @@
                 console.log("It's a tie!")
             }
         }
+
+        window.addEventListener('mousedown', getPlayerChoice)
 
         game()
     </script>
