@@ -29,6 +29,7 @@
         const score = document.querySelector('.score')
         const results = document.querySelector('.results')
 
+        // Adds an event listener to all of the buttons
         buttons.forEach((button) => {
             button.addEventListener('click', () => {
                 const playerInput = button.id
@@ -39,6 +40,8 @@
                 score.textContent = playerScore + " : " + computerScore
                 results.textContent = currentResults
 
+                // If one of these conditions have been met, we hava
+                // a winner!
                 if(playerScore === 5){
                     displayWinner("Player")
                 }
@@ -104,6 +107,7 @@
 
         }
 
+        // Creates a DOM element to display the winner 
         function displayWinner(winner) {
             const winnerText = document.createElement('p')
             winnerText.textContent = winner + " has won!"
